@@ -4,7 +4,7 @@ import Axios from 'axios'
 
 const Users = () => {
   const [listOfUsers, setListOfUsers] = useState([])
-  const [counter, setCounter] = useState(1)
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     Axios.get('https://randomuser.me/api/?results=5').then(response => {
@@ -14,7 +14,7 @@ const Users = () => {
 
   const newUser = () => {
     if (counter > 4) {
-      setCounter(1)
+      setCounter(0)
     } else {
       setCounter(counter + 1)
     }
