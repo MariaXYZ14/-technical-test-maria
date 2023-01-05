@@ -14,13 +14,11 @@ const UserList = ({ Usersdata = [] }) => {
   if (Usersdata.length === 0) {
     return null
   }
-  const filter = () => {
-    return Usersdata.slice(0, showUserState)
-  }
+
   return (
     <>
       <UsersGrid>
-        {filter().map(({ email, name, picture }) => (
+        {Usersdata.slice(0, showUserState).map(({ email, name, picture }) => (
           <User key={email}>
             <Image src={picture.large} />
             <Name>{name.first} {name.last}</Name>
