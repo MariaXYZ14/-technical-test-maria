@@ -27,7 +27,7 @@ const UserList = () => {
           </User>
         ))}
       </UsersGrid>
-      <Button onClick={newUser}>ADD</Button>
+      <Button onClick={newUser} key='add'>ADD</Button>
     </>
   )
 }

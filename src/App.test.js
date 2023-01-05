@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from '@testing-library/react'
+import UserList from './components/UserList'
+import { act } from 'react-dom/test-utils'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('the button add is rendered', async () => {
+  await act(async () => {
+    render(<UserList />)
+    screen.debug()
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    screen.debug()
+  })
+
+  const text = screen.queryAllByText('ADD')
+  screen.debug()
+  expect(text.length).toBeGreaterThan(0)
+})
