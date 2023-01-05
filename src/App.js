@@ -1,5 +1,5 @@
 import './App.css'
-import UserList from './components/Users'
+import UserList from './components/UserList'
 import data from './resources/data'
 
 function App () {
