@@ -2,7 +2,6 @@ import React from 'react'
 import { UsersGrid, User, Name, Email, Image } from './styles'
 
 const Users = ({ Usersdata = [] }) => {
-  console.log(Usersdata)
   return (
     <UsersGrid>
       {Usersdata.map(({ email, name, picture }) => (
