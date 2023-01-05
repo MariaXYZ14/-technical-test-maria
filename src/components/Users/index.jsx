@@ -1,30 +1,26 @@
 import React, { useState } from 'react'
 import { UsersGrid, User, Name, Email, Image, Button } from './styles'
 
-const Users = ({ Usersdata = [] }) => {
-  let InitialArray = []
-
-  const [listOfUsers, setListOfUsers] = useState(InitialArray)
-  const [counter, setCounter] = useState(1)
+const UserList = ({ Usersdata = [] }) => {
+  const [showUserState, setUserState] = useState(0)
 
   const newUser = () => {
-    if (counter > 5) {
-      InitialArray = []
-      setCounter(1)
+    if (showUserState > Usersdata.length) {
+      setUserState(0)
     } else {
-      InitialArray = Usersdata.slice(0, counter)
-      setCounter(counter + 1)
+      setUserState(showUserState + 1)
     }
-
-    setListOfUsers(InitialArray)
   }
-  if (!InitialArray) {
-    return <></>
+  if (Usersdata.length === 0) {
+    return null
+  }
+  const filter = () => {
+    return Usersdata.slice(0, showUserState)
   }
   return (
     <>
       <UsersGrid>
-        {listOfUsers.map(({ email, name, picture }) => (
+        {filter().map(({ email, name, picture }) => (
           <User key={email}>
             <Image src={picture.large} />
             <Name>{name.first} {name.last}</Name>
@@ -37,4 +33,4 @@ const Users = ({ Usersdata = [] }) => {
   )
 }
 
-export default Users
+export default UserList
